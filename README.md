@@ -6,10 +6,10 @@ Um sistema de gerenciamento de pessoas em API REST com Spring Boot.
 
 ## Aprendizado 
 
-* Como ultilizar arquitetura REST.
-* Uso de DTO para fazer a transferencia dos dados.
-* Utilização do lombok para otimizar o codigo.
+* Como utilizar arquitetura REST.
+* Uso de DTO para fazer a transferência dos dados.
+* Utilização do lombok para otimizar o código.
 * Utilizar o MapStruct para converter objetos DTO para um entidade.
-* Testes unitarios com Mock.
-* Deploy no Heroku atraves do GitHub.
+* Testes unitários com Mock.
+* Deploy no Heroku através do GitHub.
 
