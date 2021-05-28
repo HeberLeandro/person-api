@@ -1,4 +1,4 @@
-package com.github.heberleandro.personapi.entity;
+package com.github.heberleandro.personapi.entities;
 
 import java.time.LocalDate;
 import java.util.List;

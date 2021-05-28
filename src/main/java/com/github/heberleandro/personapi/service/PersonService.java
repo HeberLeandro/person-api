@@ -2,36 +2,30 @@ package com.github.heberleandro.personapi.service;
 
 import com.github.heberleandro.personapi.exception.PersonNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.PermissionDeniedDataAccessException;
 import org.springframework.stereotype.Service;
 import com.github.heberleandro.personapi.dto.mapper.PersonMapper;
 import com.github.heberleandro.personapi.dto.request.PersonDTO;
 import com.github.heberleandro.personapi.dto.response.MessageResponseDTO;
-import com.github.heberleandro.personapi.entity.Person;
+import com.github.heberleandro.personapi.entities.Person;
 import com.github.heberleandro.personapi.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 	
 	private PersonRepository personRepository;
 	
 	private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-	@Autowired
-	public PersonService(PersonRepository personRepository) {
-		this.personRepository = personRepository;
-	}
-
 	public MessageResponseDTO createPerson(PersonDTO personDTO) {
 		Person personToSave = personMapper.toModel(personDTO);
 		
 		Person savedPerson = personRepository.save(personToSave);
-		return createMessageResponse(savedPerson.getId(), "Created person with ID ");
+		return createMessageResponse(savedPerson.getId(), "Person successfully created with ID ");
 	}
 
 	public List<PersonDTO> listAll() {
@@ -68,7 +62,7 @@ public class PersonService {
 
 	private MessageResponseDTO createMessageResponse(Long id, String message) {
 		return MessageResponseDTO.builder()
-				.Message(message + id)
+				.message(message + id)
 				.build();
 	}
 }

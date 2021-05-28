@@ -8,5 +8,5 @@ import lombok.Data;
 @Builder(access = AccessLevel.PUBLIC)
 public class MessageResponseDTO {
 	
-	private String Message;
+	private String message;
 }

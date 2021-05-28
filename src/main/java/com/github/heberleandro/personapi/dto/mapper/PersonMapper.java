@@ -3,7 +3,7 @@ package com.github.heberleandro.personapi.dto.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import com.github.heberleandro.personapi.dto.request.PersonDTO;
-import com.github.heberleandro.personapi.entity.Person;
+import com.github.heberleandro.personapi.entities.Person;
 import org.mapstruct.factory.Mappers;
 
 @Mapper

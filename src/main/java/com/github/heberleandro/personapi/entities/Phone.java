@@ -1,4 +1,4 @@
-package com.github.heberleandro.personapi.entity;
+package com.github.heberleandro.personapi.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
