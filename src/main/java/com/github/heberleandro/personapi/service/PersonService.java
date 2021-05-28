@@ -2,6 +2,7 @@ package com.github.heberleandro.personapi.service;
 
 import com.github.heberleandro.personapi.exception.PersonNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.PermissionDeniedDataAccessException;
 import org.springframework.stereotype.Service;
 import com.github.heberleandro.personapi.dto.mapper.PersonMapper;
 import com.github.heberleandro.personapi.dto.request.PersonDTO;
@@ -43,8 +44,18 @@ public class PersonService {
 	}
 
 	public PersonDTO findById(Long id) throws PersonNotFoundException {
-		Person person = personRepository.findById(id)
-				.orElseThrow(() -> new PersonNotFoundException(id));
+		Person person = verifyIfExists(id);
 		return personMapper.toDTO(person);
+	}
+	
+	public void delete(Long id) throws PersonNotFoundException {
+		verifyIfExists(id);
+
+		personRepository.deleteById(id);
+	}	
+	
+	private Person verifyIfExists(Long id) throws PersonNotFoundException {
+		return personRepository.findById(id)
+				.orElseThrow(() -> new PersonNotFoundException(id));
 	}
 }
