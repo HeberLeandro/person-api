@@ -1,4 +1,4 @@
-package enums;
+package com.github.heberleandro.personapi.enums;
 
 import lombok.Getter;
 
