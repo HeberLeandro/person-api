@@ -9,6 +9,9 @@ import com.github.heberleandro.personapi.entity.Person;
 import com.github.heberleandro.personapi.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 	
@@ -29,5 +32,11 @@ public class PersonService {
 				.Message("Created person with ID "+ savedPerson.getId())
 				.build();
 	}
-	
+
+	public List<PersonDTO> listAll() {
+		List<Person> allPeople = personRepository.findAll();
+		return allPeople.stream()
+				.map(personMapper::toDTO)
+				.collect(Collectors.toList());
+	}
 }

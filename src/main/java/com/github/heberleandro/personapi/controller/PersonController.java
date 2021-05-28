@@ -16,6 +16,8 @@ import com.github.heberleandro.personapi.dto.response.MessageResponseDTO;
 import com.github.heberleandro.personapi.entity.Person;
 import com.github.heberleandro.personapi.service.PersonService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/app/v1/people")
 public class PersonController {
@@ -33,5 +35,10 @@ public class PersonController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
 		return personService.createPerson(personDTO);
+	}
+
+	@GetMapping
+	public List<PersonDTO> listAll(){
+		return personService.listAll();
 	}
 }
